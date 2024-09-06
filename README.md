@@ -25,6 +25,24 @@ workspace=Workspace(subscription_id,resource_group,workspace_name)
 
 This allows you to access the particular Workspace(denoted by workspace name) in Azure. 
 
+If we want to get access to the dataset inside this workspace, then all we need to do is to use the Dataset library from the Azureml.core package.
+A sample code for using dataset from the workspace:
+
+from azureml.core import Dataset
+data1=Dataset.get_by_id(workspace,"name_of_data")
+
+Here, we have first imported the Dataset class from azureml.core library. And to access a particular dataset we use the id for that dataset. 
+
+We can also access dataset by name.
+data2= Dataset.get_by_name(workspace, name='name_of_data').to_pandas_dataframe()
+Here, we access the dataset by name and convert the dataset into dataframe.  
+
+If we want to download the dataset in our local, we need to use
+dataset.download(target_path='your_local_path')
+This downloads the dataset in our local system. After this we can examine and play with the data. 
+
+
+
 
 
 
